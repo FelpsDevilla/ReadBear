@@ -1,0 +1,7 @@
+{
+  "name": "ReadBear",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
