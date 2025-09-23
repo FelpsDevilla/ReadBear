@@ -5,8 +5,7 @@ import { Book } from 'src/app/classes/book';
 @Component({
   selector: 'app-book-miniature',
   templateUrl: './book-miniature.component.html',
-  styleUrls: ['./book-miniature.component.scss'],
-  imports: [IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent]
+  styleUrls: ['./book-miniature.component.scss']
 })
 export class BookMiniatureComponent  implements OnInit {
   @Input() book!: Book;

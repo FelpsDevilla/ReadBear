@@ -1,19 +1,23 @@
-.book{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 10px;
-    padding: 0;
-    background-color: red;
-    width: fit-content;
-    border-radius: 5px;
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30vw;
+  max-width: 200px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
-.book p{
-    margin: 0 10px;
-    padding: 1vh 0;
+.book img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
 }
 
-img{
-    width: 35vw;
+.book p {
+  margin: 0;
+  padding: 2vw;
+  text-align: center;
+  width: 100%;
+  background: var(--ion-color-bear);
+  color: var(--ion-color-bear-contrast);
 }
