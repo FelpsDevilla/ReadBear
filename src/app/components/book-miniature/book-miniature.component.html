@@ -1,4 +1,9 @@
 <div class="book" (click)="onBookClick()">
   <p>{{ book.title }}</p>
-  <img [src]="book.coverImageUrl" alt="Book Cover"/>
+  <div class="image-wrapper">
+    <img [src]="book.coverImageUrl" alt="Book Cover"/>
+    <div class="overlay">
+      <ion-icon src="../../../assets/favicon.svg" name="eye-outline"></ion-icon>
+    </div>
+  </div>
 </div>

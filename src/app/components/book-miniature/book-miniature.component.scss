@@ -6,11 +6,52 @@
   max-width: 200px;
   box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Wrapper para controlar hover na imagem */
+.image-wrapper {
+  position: relative;
+  width: 100%;
 }
 
 .book img {
+  width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.4s ease;
+}
+
+.overlay ion-icon {
+  font-size: 4vw;
+  transform: scale(0.8);
+  transition: transform 0.5s ease;
+}
+
+.book:hover {
+  transform: scale(1.05);
+}
+
+.book:hover .overlay {
+  opacity: 1;
+}
+
+.book:hover .overlay ion-icon {
+  transform: scale(3);
 }
 
 .book p {

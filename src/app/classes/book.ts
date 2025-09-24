@@ -1,14 +1,13 @@
 export class Book {
+    id: number;
     title: string;
-    author: string;
-    publicationYear: number
     coverImageUrl: string;
     pdfUrl: string;
+    pageNumber?: number;
     
-    constructor(title: string, author: string, publicationYear: number, coverImageUrl: string, pdfUrl: string) {
+    constructor(title: string, coverImageUrl: string, pdfUrl: string, id: number = 0) {
+        this.id = id;
         this.title = title;
-        this.author = author;
-        this.publicationYear = publicationYear;
         this.coverImageUrl = coverImageUrl;
         this.pdfUrl = pdfUrl;
     }
