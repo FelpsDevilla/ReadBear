@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle} from '@ionic/angular/standalone';
 import { Book } from 'src/app/classes/book';
+import { FileService } from 'src/app/services/file.service';
 
 @Component({
   selector: 'app-pdf-viwer',

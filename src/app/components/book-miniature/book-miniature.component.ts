@@ -17,7 +17,7 @@ export class BookMiniatureComponent implements OnInit {
   ngOnInit() { }
 
   onBookClick() {
-    this.router.navigate(['/pdf'])
+    this.router.navigate(['/pdf']);
     console.log('Livro clicado:', this.book);
     // aqui você pode navegar, abrir modal, emitir evento, etc.
   }
