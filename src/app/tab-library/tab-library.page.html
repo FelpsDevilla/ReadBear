@@ -1,15 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+<ion-header [translucent]="false">
+    <ion-toolbar>
+      <div class="header-content ">
+        <img src="../../assets/icon/favicon.png" alt="Ícone de urso">
+        <ion-searchbar class="ion-no-padding" placeholder="Buscar por livros"></ion-searchbar>
+      </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="books-grid">
+    @for (book of myBooks; track book) {
+      <app-book-miniature [book]="book"></app-book-miniature>
+    } @empty {
+      <div class="empty-state">
+        <p>Nada para ver aqui ainda :/</p>
+        <img src="../../assets/icon/favicon.png" alt="">
+      </div>
+    }
+  </div>
 </ion-content>

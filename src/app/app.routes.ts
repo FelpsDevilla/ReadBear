@@ -13,9 +13,8 @@ export const routes: Routes = [
     path: 'pdf',
     loadComponent: () => import('./pages/pdf-viwer/pdf-viwer.page').then((m) => m.PdfViewerPage),
   },
-  //   {
-  //   path: 'book/:id', // rota com ID
-  //   loadChildren: () => import('./pages/book-detail/book-detail.module').then(m => m.BookDetailPageModule)
-  // }
-
+  {
+    path: 'add-folder',
+    loadComponent: () => import('./pages/add-folder/add-folder.page').then( m => m.AddFolderPage)
+  }
 ];
