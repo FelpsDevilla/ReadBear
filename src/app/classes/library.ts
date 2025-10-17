@@ -1,3 +1,5 @@
+import { library } from "ionicons/icons";
+
 export class Library {
     id?: number;
     title?: string;
