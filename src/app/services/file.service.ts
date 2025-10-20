@@ -25,4 +25,9 @@ export class FileService {
 
     return uriResult;
   }
+
+  public async getFolderPath(): Promise<string> {
+    console.log('Adicionar Biblioteca - FileService');
+    return '/mock/path/to/folder';
+  }
 }

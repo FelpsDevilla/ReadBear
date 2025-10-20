@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonItem, IonList, IonLabel, IonButton } from '@ionic/angular/standalone';
 import { Library } from 'src/app/classes/library';
 import { NothingToSeeYetComponent } from 'src/app/components/nothing-to-see-yet/nothing-to-see-yet.component';
+import { FileService } from 'src/app/services/file.service';
+import { LibraryService } from 'src/app/services/library.service';
+import { library } from 'ionicons/icons';
 
 @Component({
   selector: 'app-add-folder',
@@ -15,13 +18,27 @@ import { NothingToSeeYetComponent } from 'src/app/components/nothing-to-see-yet/
 })
 export class AddFolderPage implements OnInit {
   librarys: Library[] = []
-  constructor() { }
+
+  constructor(private fileService: FileService, private libraryService: LibraryService) { }
 
   ngOnInit() {
+    this.loadLibrarys();
   }
 
-  addLibrary() {
-    console.log('Adicionar Biblioteca');
+  private async loadLibrarys() {
+    await this.libraryService.getLibraries().then((libs) => {
+      this.librarys = libs;
+    });
   }
 
+  public async addLibrary() {
+    const path = await this.fileService.getFolderPath();
+
+    const library = new Library();
+    library.path = path;
+    library.title = 'New Library';
+    // Adcionar popover com input e title
+
+    this.libraryService.addLibrary(library);
+  }
 }
