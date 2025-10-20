@@ -1,24 +1,23 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-        </ion-buttons>
-    <ion-title>add-folder</ion-title>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Adicionar Pasta</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list [inset]="true">
-    @for (library of librarys; track library) {
-    <ion-item>
-      <ion-label>{{ library.title }}</ion-label>
-    </ion-item>
-    } @empty {
-      <div class="empty-state">
-        <p>Nada para ver aqui ainda :/</p>
-        <img src="../../assets/icon/favicon.png" alt="">
-      </div>
-    }
-  </ion-list>
-  <ion-button class="ion-align-content-center">Adcionar Biblioteca</ion-button>
+    <ion-list>
+      @for (library of librarys; track library) {
+      <ion-item>
+        <ion-label>{{ library.title }}</ion-label>
+      </ion-item>
+      } @empty {
+      <app-nothing-to-see-yet></app-nothing-to-see-yet>
+      }
+    </ion-list>
+    <ion-button class="ion-margin" expand="block" (click)="addLibrary()"
+      >Adcionar Biblioteca</ion-button
+    >
 </ion-content>
