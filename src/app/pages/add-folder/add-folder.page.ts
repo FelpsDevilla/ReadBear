@@ -26,19 +26,22 @@ export class AddFolderPage implements OnInit {
   }
 
   private async loadLibrarys() {
-    await this.libraryService.getLibraries().then((libs) => {
-      this.librarys = libs;
-    });
+    const bookList = await this.fileService.listBooks();
+    console.log('Lista de livros salvos: ' + JSON.stringify(bookList));
+
+    ///this.librarys = await this.libraryService.getLibrarys();
   }
 
   public async addLibrary() {
-    const path = await this.fileService.getFolderPath();
-
+    const book = await this.fileService.saveBook();
+    const bookList = await this.fileService.listBooks();
+    console.log('Lista de livros salvos: ' + JSON.stringify(bookList));
+    const path = "teste/path/to/folder"; //await this.fileService.getFolderPath();
     const library = new Library();
     library.path = path;
     library.title = 'New Library';
     // Adcionar popover com input e title
 
-    this.libraryService.addLibrary(library);
+    //this.libraryService.addLibrary(library);
   }
 }

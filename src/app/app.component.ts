@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private database: DatabaseService) {}
 
   async initializeApp() {
-    await this.database.initializeDatabase();
+    //await this.database.initializeDatabase();
     await SplashScreen.hide();
   }
 }
