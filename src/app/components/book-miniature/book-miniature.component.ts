@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonIcon } from '@ionic/angular/standalone';
 import { Book } from 'src/app/classes/book';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./book-miniature.component.scss'],
   imports: [IonIcon]
 })
-export class BookMiniatureComponent implements OnInit {
+export class BookMiniatureComponent {
   @Input() book!: Book;
 
   constructor(private router: Router) { }
@@ -17,9 +17,6 @@ export class BookMiniatureComponent implements OnInit {
   ngOnInit() { }
 
   onBookClick() {
-    this.router.navigate(['/pdf']);
-    console.log('Livro clicado:', this.book);
-    // aqui você pode navegar, abrir modal, emitir evento, etc.
+    this.router.navigate(['/pdf'], {queryParams: { book: JSON.stringify(this.book) }});
   }
-
 }

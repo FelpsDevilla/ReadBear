@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { FilePicker } from '@capawesome/capacitor-file-picker';
+import { Book } from '../classes/book';
 
 
 @Injectable({
@@ -29,22 +30,45 @@ export class FileService {
 
   public async saveBook() {
     const file = await this.pickBook();
-
     const webPath = Capacitor.convertFileSrc(file.path);
     const response = await fetch(webPath);
-
     const base64Data = await this.blobToBase64(await response.blob());
 
     await Filesystem.writeFile({
-      path: file.name,         // nome do arquivo no app
+      path: file.name,
       data: base64Data,
       directory: Directory.Documents
     });
+
+    return new Book(
+      file.name,
+      file.path,
+      0
+    );
   }
 
-  public async listBooks(): Promise<any> {
-    const result = await Filesystem.readdir({directory: Directory.Documents, path: ''});
-    return result.files;
+  public async readBook(book: Book): Promise<any> {
+    const file = await Filesystem.readFile({
+      path: book.title,
+      directory: Directory.Documents
+    });
+    // Filesystem.readFile returns a base64 string in file.data, so return it directly.
+    return file.data;
+  }
+
+  public async listBooks(): Promise<Book[]> {
+    const result = await Filesystem.readdir({ directory: Directory.Documents, path: '' });
+    const books: Book[] = new Array<Book>();
+
+    result.files.forEach(file => {
+      books.push(new Book(
+        file.name,
+        file.uri,
+        0
+      ));
+    })
+
+    return books;
   }
 
   private async blobToBase64(blob: Blob): Promise<string> {

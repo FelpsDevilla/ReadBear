@@ -12,11 +12,6 @@ export const routes: Routes = [
           import('../tab-library/tab-library.page').then((m) => m.TabLibraryPage),
       },
       {
-        path: 'tabConfig',
-        loadComponent: () =>
-          import('../tab-config/tab-config.page').then((m) => m.TabConfigPage),
-      },
-      {
         path: '',
         redirectTo: '/tabs/tabLibrary',
         pathMatch: 'full',

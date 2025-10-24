@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle } from '@ionic/angular/standalone';
 import { Book } from 'src/app/classes/book';
 import { FileService } from 'src/app/services/file.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pdf-viwer',
@@ -10,12 +11,21 @@ import { FileService } from 'src/app/services/file.service';
   styleUrls: ['./pdf-viwer.page.scss'],
   imports: [PdfViewerModule, IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle],
 })
-export class PdfViewerPage  implements OnInit {
-  @Input() book: Book = new Book('Teste', '', '../../assets/testepdf2.pdf');
-  pdfSrc: string = this.book.pdfUrl;
-  pagina: number = this.book.pageNumber || 1;
+export class PdfViewerPage implements OnInit {
+  public book!: Book;
+  public pagina = 1;
+  public pdfSrc: string = '';
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private fileService: FileService) {
+    
+  }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.route.queryParams.subscribe(async params => {
+      this.book = JSON.parse(params['book']);
+      const base64Data = await this.fileService.readBook(this.book);
+      this.pdfSrc = base64Data;
+      console.log(this.pdfSrc);
+    });
+  }
 }

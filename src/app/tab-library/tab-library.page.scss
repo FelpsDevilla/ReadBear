@@ -26,3 +26,16 @@ ion-toolbar.sc-ion-searchbar-ios-h, ion-toolbar .sc-ion-searchbar-ios-h {
     margin-top: 30vh;
     text-align: center;
 }
+
+.content{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.content ion-button{
+    width: 50%;
+}

@@ -10,12 +10,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="books-grid">
-    @for (book of myBooks; track book) {
-    <app-book-miniature [book]="book"></app-book-miniature>
-    } @empty {
-    <app-nothing-to-see-yet></app-nothing-to-see-yet>
-    }
+<ion-content class="ion-justify-content-center ion-align-content-center" [fullscreen]="true">
+  <div class="content">
+    <div class="books-grid">
+      @for (book of myBooks; track book) {
+      <app-book-miniature [book]="book"></app-book-miniature>
+      } @empty {
+      <app-nothing-to-see-yet></app-nothing-to-see-yet>
+      }
+    </div>
+    <ion-button (click)="addBook()">Adcionar Livro</ion-button>
   </div>
 </ion-content>
