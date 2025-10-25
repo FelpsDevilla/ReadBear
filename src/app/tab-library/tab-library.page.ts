@@ -17,7 +17,7 @@ export class TabLibraryPage {
   constructor(private fileService: FileService) { }
 
   async ngOnInit() {
-    this.loadBooks();
+    await this.loadBooks();
   }
 
   async loadBooks() {
@@ -26,5 +26,6 @@ export class TabLibraryPage {
 
   public async addBook() {
     await this.fileService.saveBook();
+    await this.loadBooks();
   }
 }

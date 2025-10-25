@@ -23,7 +23,6 @@ export class FileService {
       return;
     }
 
-    console.log('Arquivo selecionado no FilePicker: ' + JSON.stringify(result.files[0]));
     return result.files[0];
   }
 
