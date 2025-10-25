@@ -4,6 +4,7 @@ import { IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle 
 import { Book } from 'src/app/classes/book';
 import { FileService } from 'src/app/services/file.service';
 import { ActivatedRoute } from '@angular/router';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-pdf-viwer',
@@ -16,15 +17,15 @@ export class PdfViewerPage implements OnInit {
   public pagina = 1;
   public pdfSrc: string = '';
 
-  constructor(private route: ActivatedRoute, private fileService: FileService) {
-    
-  }
+  constructor(private route: ActivatedRoute) {}
 
   async ngOnInit() {
     this.route.queryParams.subscribe(async params => {
       this.book = JSON.parse(params['book']);
-      const base64Data = await this.fileService.readBook(this.book);
-      this.pdfSrc = base64Data;
+      // metodo para converter file URI para webPath
+      // o angular pdf viewer precisa de um webPath
+      const webPath = Capacitor.convertFileSrc(this.book.pdfUrl);
+      this.pdfSrc = webPath;
       console.log(this.pdfSrc);
     });
   }
