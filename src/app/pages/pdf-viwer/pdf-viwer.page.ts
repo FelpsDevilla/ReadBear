@@ -16,6 +16,7 @@ export class PdfViewerPage implements OnInit {
   public book!: Book;
   public pagina = 1;
   public pdfSrc: string = '';
+  public mostrarBotoes: boolean = false;
 
   constructor(private route: ActivatedRoute) {}
 

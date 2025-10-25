@@ -1,11 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button default-href="#"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ book.title }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+@if (mostrarBotoes){
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button default-href="#"></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{ book.title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+}
 
 <ion-content [scrollY]="false">
   <div class="pdf-container">
@@ -13,7 +15,7 @@
       [src]="pdfSrc"
       [render-text]="true"
       [original-size]="false"
-      [show-all]="true"
+      [show-all]="false"
       [fit-to-page]="true"
       [autoresize]="true"
       [page]="1"
@@ -21,3 +23,21 @@
     ></pdf-viewer>
   </div>
 </ion-content>
+
+<!-- @if (!esconderBotoes){
+  <ion-footer [hidden]="esconderBotoes">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="pagina = pagina - 1" [disabled]="pagina <= 1">
+          <ion-icon slot="icon-only" name="arrow-back-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Página {{ pagina }}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="pagina = pagina + 1">
+          <ion-icon slot="icon-only" name="arrow-forward-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+} -->
