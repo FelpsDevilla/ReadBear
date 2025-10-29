@@ -1,5 +1,5 @@
 # ReadBear
-<img src="https://github.com/FelpsDevilla/ReadBear/blob/master/src/assets/icon/favicon.png">
+<img src="https://github.com/FelpsDevilla/ReadBear/blob/master/src/assets/icon/favicon.png" height=150px>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
